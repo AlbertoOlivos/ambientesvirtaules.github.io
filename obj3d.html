@@ -9,6 +9,7 @@
 </head>
 
 <body> 
+    <!-- Encabezado -->
     <header class='menu-container' id="inicio">
         <div class='identificador'>
             <img src="imagenes/logo.png">
@@ -21,7 +22,9 @@
         </div>
     </header>
 
+    <!-- Escena de A-Frame -->
     <a-scene>
+        <!-- Fondo -->
         <a-sky id="fondo" src="imagenes/ambiente1.jpg"></a-sky>
         
         <!-- Cámara con controles de movimiento -->
@@ -32,26 +35,30 @@
         </a-entity>
 
         <!-- Contenedor de modelos 3D -->
-        <a-entity id="contenedor-modelos" position="0 0 -3">
-            <!-- Cubos de prueba que representan cada sección -->
-            <a-box id="modelo1" position="0 0 0" color="red" scale="1 1 1"></a-box>
-            <a-box id="modelo2" position="3 0 0" color="blue" scale="1 1 1"></a-box>
-            <a-box id="modelo3" position="6 0 0" color="green" scale="1 1 1"></a-box>
-            <a-box id="modelo4" position="9 0 0" color="yellow" scale="1 1 1"></a-box>
+        <a-entity id="contenedor-modelos">
+            <!-- Modelo 1 -->
+            <a-entity id="modelo1" gltf-model="modelos/modelo1.glb" position="0 0 -3" scale="1 1 1" visible="false"></a-entity>
+            <!-- Modelo 2 -->
+            <a-entity id="modelo2" gltf-model="modelos/modelo2.glb" position="0 0 -3" scale="1 1 1" visible="false"></a-entity>
+            <!-- Modelo 3 -->
+            <a-entity id="modelo3" gltf-model="modelos/modelo3.glb" position="0 0 -3" scale="1 1 1" visible="false"></a-entity>
+            <!-- Modelo 4 -->
+            <a-entity id="modelo4" gltf-model="modelos/modelo4.glb" position="0 0 -3" scale="1 1 1" visible="false"></a-entity>
         </a-entity>
     </a-scene>
 
     <script>
         function cambiarAmbiente(ambiente) {
             let fondo = document.getElementById("fondo");
-            let contenedor = document.getElementById("contenedor-modelos");
+            let modelos = document.getElementById("contenedor-modelos");
 
-            // Ocultar todos los cubos
+            // Ocultar todos los modelos
             document.getElementById("modelo1").setAttribute("visible", "false");
             document.getElementById("modelo2").setAttribute("visible", "false");
             document.getElementById("modelo3").setAttribute("visible", "false");
             document.getElementById("modelo4").setAttribute("visible", "false");
 
+            // Mostrar el modelo correspondiente según la sección seleccionada
             if (ambiente === "secc1") {
                 fondo.setAttribute("src", "imagenes/ambiente1.jpg");
                 document.getElementById("modelo1").setAttribute("visible", "true");
@@ -69,3 +76,4 @@
     </script>
 </body>
 </html>
+
